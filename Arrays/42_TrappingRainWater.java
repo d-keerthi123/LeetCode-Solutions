@@ -16,13 +16,11 @@ class Solution {
             RightMax[i]=Math.max(height[i],RightMax[i+1]);
         }
         int trappedWater=0;
-        //waterLevel min(leftmax boundary, rigth max boundary)
         for(int i=0;i<height.length;i++){
-            int Waterlevel=Math.min(leftMax[i],RightMax[i]);
+            int Waterlevel=Math.min(leftMax[i],RightMax[i]); //waterLevel min(leftmax boundary, rigth max boundary)
             trappedWater+=Waterlevel-height[i];
             
         }
-        //trapped water= (waterlevel - height[i])
         return trappedWater;
     }
 }
