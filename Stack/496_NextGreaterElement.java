@@ -1,5 +1,5 @@
-//Time Complexity O(nxm)
-//Space Complexity O(n)
+//Time Complexity O(nxm) because for each element of nums1 we perform a linear search in nums2.
+//Space Complexity O(n) stack, nextGreater array
 
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
