@@ -1,3 +1,6 @@
+//Approach :
+//Check if max value in left subtree < node & min value in right subtree > node 
+
 class Solution {
     public boolean isValidBST(TreeNode root){
         return helper(root,null,null);
