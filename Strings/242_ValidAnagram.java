@@ -1,5 +1,6 @@
 //Time Complexity O(n + 26) → O(n)
 //Space Complexity O(1)
+//Even though we used extra space here - it doesn't depend on input size. The freq array has fixed size of 26 .So here space complexity will be O(1)
 
 // Anagram - Same length, Same characters ,Same frequency of each character (order does not matter)
 class Solution {
