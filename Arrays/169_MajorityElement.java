@@ -33,5 +33,27 @@ class Solution {
         }
         // majority element survives all cancellations 
         return candidate;
+
+        //HashMap Approach O(n)
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            int num=nums[i];
+            if(hm.containsKey(num)){
+                //if key already exits in the hash map
+                hm.put(num,hm.get(num)+1);
+            }
+            else{
+                hm.put(num,1);
+            }
+        }
+
+        Set<Integer> keys=hm.keySet();
+        for(Integer key:keys){
+            if(hm.get(key)> n/2){
+                return key;
+            }
+        }
+        return -1;
     }
 }
