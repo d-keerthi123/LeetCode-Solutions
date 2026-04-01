@@ -25,13 +25,16 @@ class MedianFinder {
         //or no. of elements should be equal in both heaps
 
         if(leftMaxHeap.size() > rightMinHeap.size()+1){
-            rightMinHeap.add(leftMaxHeap.peek());
-            leftMaxHeap.remove();
+            // rightMinHeap.add(leftMaxHeap.peek());
+            // leftMaxHeap.remove();
+
+             rightMinHeap.add(leftMaxHeap.poll()); // poll() -->it removes element and returns in one step
         }
         //this case should never happen
         else if(leftMaxHeap.size() < rightMinHeap.size()){ 
-            leftMaxHeap.add(rightMinHeap.peek());
-            rightMinHeap.remove();
+            // leftMaxHeap.add(rightMinHeap.peek());
+            // rightMinHeap.remove();
+            leftMaxHeap.add(rightMinHeap.poll());
         }
     }
     
