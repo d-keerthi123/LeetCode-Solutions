@@ -1,4 +1,5 @@
-//Time Complexity O(n logk)
+//Approach 1:
+//Time Complexity O(n * k)
 //Space Complexity O(k)
 
 class Solution {
@@ -19,46 +20,73 @@ class Solution {
         }
     }
     public int[] smallestRange(List<List<Integer>> nums) {
-        //  int k=nums.size(); //
+         int k=nums.size(); 
 
-        // //stores current idx of each list
-        // int ptr[]=new int[k]; //initially  [0, 0, 0, ..., 0]
+        //stores current idx of each list
+        int ptr[]=new int[k]; //initially  [0, 0, 0, ..., 0]
 
-        // int resultRange[]={-1000000,1000000};
-        // while(true){
-        //     int minEl=Integer.MAX_VALUE;
-        //     int maxEl=Integer.MIN_VALUE;
-        //     int minElListIdx = 0;
+        int resultRange[]={-1000000,1000000};
+        while(true){
+            int minEl=Integer.MAX_VALUE;
+            int maxEl=Integer.MIN_VALUE;
+            int minElListIdx = 0;
 
-        //     //find current min and max among selected elements
-        //     for(int i=0;i<k;i++){
-        //         int listIdx=i;
-        //         int elIdx=ptr[i];
-        //         int element=nums.get(listIdx).get(elIdx);
+            //find current min and max among selected elements
+            for(int i=0;i<k;i++){
+                int listIdx=i;
+                int elIdx=ptr[i];
+                int element=nums.get(listIdx).get(elIdx);
 
-        //         if(element < minEl){
-        //             minEl=element;
-        //             minElListIdx=listIdx;
-        //         }
-        //         maxEl=Math.max(maxEl,element);
-        //     }
-        //     //update range
-        //     if (maxEl - minEl < resultRange[1] - resultRange[0] ||
-        //     (maxEl - minEl ==     resultRange[1] - resultRange[0] && 
-        //     minEl < resultRange[0])) {
-        //         resultRange[0]=minEl;
-        //         resultRange[1]=maxEl;
-        //     }
+                if(element < minEl){
+                    minEl=element;
+                    minElListIdx=listIdx;
+                }
+                maxEl=Math.max(maxEl,element);
+            }
+            //update range
+            if (maxEl - minEl < resultRange[1] - resultRange[0] ||
+            (maxEl - minEl ==     resultRange[1] - resultRange[0] && 
+            minEl < resultRange[0])) {
+                resultRange[0]=minEl;
+                resultRange[1]=maxEl;
+            }
 
-        //     // Move pointer of list that had minimum element
-        //     ptr[minElListIdx]++;
-        //     // If that list is exhausted, stop
-        //     if(ptr[minElListIdx] == nums.get(minElListIdx).size()){
-        //         break;
-        //     }
+            // Move pointer of list that had minimum element
+            ptr[minElListIdx]++;
+            // If that list is exhausted, stop
+            if(ptr[minElListIdx] == nums.get(minElListIdx).size()){
+                break;
+            }
 
-        // }
-        // return resultRange;
+        }
+        return resultRange;
+    }
+}
+    
+
+
+//Approach 2:
+//Time Complexity O(n log k)
+//Space Complexity O(k)
+
+class Solution {
+    public class Node implements Comparable<Node>{
+        int val;
+        int listIdx;
+        int elementIdx;
+
+        public Node(int val,int listIdx,int elementIdx){
+            this.val=val;
+            this.listIdx=listIdx;
+            this.elementIdx=elementIdx;
+        }
+
+        @Override
+        public int compareTo(Node l1){
+            return this.val-l1.val;
+        }
+    }
+    public int[] smallestRange(List<List<Integer>> nums) {
 
         int k=nums.size();
         PriorityQueue<Node> pq= new PriorityQueue<>();
