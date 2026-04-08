@@ -3,22 +3,6 @@
 //Space Complexity O(k)
 
 class Solution {
-    public class Node implements Comparable<Node>{
-        int val;
-        int listIdx;
-        int elementIdx;
-
-        public Node(int val,int listIdx,int elementIdx){
-            this.val=val;
-            this.listIdx=listIdx;
-            this.elementIdx=elementIdx;
-        }
-
-        @Override
-        public int compareTo(Node l1){
-            return this.val-l1.val;
-        }
-    }
     public int[] smallestRange(List<List<Integer>> nums) {
          int k=nums.size(); 
 
@@ -65,7 +49,7 @@ class Solution {
     
 
 
-//Approach 2:
+//Approach 2: Heap Approach
 //Time Complexity O(n log k)
 //Space Complexity O(k)
 
