@@ -1,5 +1,5 @@
-//Approach 1:
-//Time Complexity O(n * k)
+//Approach 1: (Time limit Exceeded)
+//Time Complexity O(n * k^2)
 //Space Complexity O(k)
 
 class Solution {
