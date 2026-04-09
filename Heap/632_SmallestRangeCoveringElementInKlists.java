@@ -7,6 +7,7 @@ class Solution {
          int k=nums.size(); 
 
         //stores current idx of each list
+        //tells which element you're currently looking at in list i
         int ptr[]=new int[k]; //initially  [0, 0, 0, ..., 0]
 
         int resultRange[]={-1000000,1000000};
@@ -91,7 +92,7 @@ class Solution {
             int minEl=curr.val;
 
             //update range
-            if(maxEl-minEl < rangeEnd-rangeStart){
+            if(maxEl-minEl < rangeEnd-rangeStart || maxEl-minEl == rangeEnd-rangeStart && minEl< rangeStart){
                 rangeStart=minEl;
                 rangeEnd=maxEl;
             }
