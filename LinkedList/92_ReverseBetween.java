@@ -31,8 +31,8 @@ class Solution {
             prev=curr;
             curr=next;
         }
-        beforeLeft.next=prev;
-        leftNode.next=curr;
+        beforeLeft.next=prev; //Connect the part before left to the new head of reversed list
+        leftNode.next=curr; //Connect the end of reversed list to the remaining list
 
         return dummy.next;
     }
