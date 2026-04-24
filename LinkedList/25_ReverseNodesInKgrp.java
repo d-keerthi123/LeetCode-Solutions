@@ -1,3 +1,4 @@
+//Approach 1: Recursive 
 //TC: O(n) Each node is visited once (reversing + recursion traversal)
 //SC: O(n) bcz of the call stack in the worst case scenario
 
@@ -37,3 +38,55 @@ class Solution {
         return prev;
     }
 }
+
+===============================================================================================================================================================
+//Approach 2: Iterative
+//Sc:O(1) 
+
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if(head==null|| k==1){
+            return head;
+        }
+        //we will make dummy bcz in the end head will change 
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+
+        ListNode prevGroupEnd=dummy;
+        
+        while(true){
+
+            //Find Kth node
+            ListNode kth=prevGroupEnd;
+            for(int i=0;i<k;i++){
+                kth=kth.next;
+                if(kth== null){
+                    return dummy.next;
+                }
+            }
+            
+        
+        // mark boundaries
+        ListNode groupStart=prevGroupEnd.next;
+        ListNode nextGroupStart=kth.next;
+
+        //Reverse
+        ListNode prev=nextGroupStart;
+        ListNode curr=groupStart;
+
+        while(curr != nextGroupStart){
+            ListNode next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        //Connect
+        prevGroupEnd.next=kth;
+        prevGroupEnd=groupStart;
+        }
+    }
+}
+
+
+    
+
