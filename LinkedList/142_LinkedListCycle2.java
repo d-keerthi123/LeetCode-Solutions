@@ -23,6 +23,6 @@ public class Solution {
             slow=slow.next;
             fast=fast.next;
         }
-        return slow; //last node
+        return slow; //node where cycle begins
     }
 }
