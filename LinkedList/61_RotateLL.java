@@ -38,3 +38,38 @@ class Solution {
 
     }
 }
+===========================================================================================================================================================
+
+//Approach 2
+//TC: O(n) 
+//SC: O(1)
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+      if(head == null || head.next==null){
+        return head;
+      }
+      //size of ll  O(n)
+      int size=1;
+      ListNode tail=head;
+      while(tail.next != null){
+        tail=tail.next;//last node
+        size++;
+      }
+
+      //Find k(rotations)
+      k = k % size;
+
+      if(k==0){
+        return head; //no change ,returns same ll
+      }
+      //1->2->3->4->5
+      ListNode curr=head;
+      for(int i=1;i<size-k;i++){  //O(n)
+        curr=curr.next; //1->2->3
+      }
+      ListNode newHead=curr.next; //4->5
+      curr.next=null;
+      tail.next=head;
+      return newHead;
+    }
+}
