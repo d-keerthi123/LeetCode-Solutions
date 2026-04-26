@@ -67,9 +67,9 @@ class Solution {
       for(int i=1;i<size-k;i++){  //O(n)
         curr=curr.next; //1->2->3
       }
-      ListNode newHead=curr.next; //4->5
-      curr.next=null;
-      tail.next=head;
-      return newHead;
+      ListNode newHead=curr.next; //4
+      curr.next=null; // breaks after 3  : 1->2->3->null  4->5->null
+      tail.next=head;  // 5 → 1 
+      return newHead; //4->5->1->2->3->mull
     }
 }
