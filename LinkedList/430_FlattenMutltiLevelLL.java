@@ -5,7 +5,7 @@ class Solution {
     public Node flatten(Node head) {
         Node curr=head;
        
-        while( curr != null){
+        while( curr != null){ //if there is valid child
             Node next=curr.next;
             if(curr.child != null){
                 
@@ -18,9 +18,9 @@ class Solution {
             while(temp.next != null){
                 temp=temp.next;
             }
-            temp.next=next;
+            temp.next=next; // forward connection
             if(next != null){
-                next.prev=temp;
+                next.prev=temp; //backward connection
                 }
             }
 
