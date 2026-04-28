@@ -3,27 +3,27 @@
 
 class Solution {
     public Node flatten(Node head) {
+        if(head == null){
+            return head;
+        }
         Node curr=head;
-       
-        while( curr != null){ //if there is valid child
+        while(curr != null){
             Node next=curr.next;
+            //valid node
             if(curr.child != null){
                 
-                Node childHead=flatten(curr.child);
-                curr.next=childHead;
-                childHead.prev=curr;
+                curr.next=flatten(curr.child);
+                curr.next.prev=curr;
                 curr.child=null;
             
-            Node temp=childHead;
-            while(temp.next != null){
-                temp=temp.next;
+            while(curr.next != null){
+               curr=curr.next;
             }
-            temp.next=next; // forward connection
             if(next != null){
-                next.prev=temp; //backward connection
-                }
+                curr.next=next;
+                next.prev=curr;
             }
-
+            }
             curr=curr.next;
         }
         return head;
