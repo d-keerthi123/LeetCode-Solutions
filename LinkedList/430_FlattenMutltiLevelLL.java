@@ -9,16 +9,16 @@ class Solution {
         Node curr=head;
         while(curr != null){
             Node next=curr.next;
-            //valid node
+            //valid child node
             if(curr.child != null){
-                
                 curr.next=flatten(curr.child);
                 curr.next.prev=curr;
                 curr.child=null;
-            
+            //Find tail
             while(curr.next != null){
                curr=curr.next;
             }
+            //Attach tail with next 
             if(next != null){
                 curr.next=next;
                 next.prev=curr;
