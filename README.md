@@ -2,7 +2,7 @@
 
 Started on: **Jan 1, 2026**
 
-This repository contains my solutions to LeetCode problems,
+This repository contains my solutions to LeetCode problems(mostly) and GeeksForGeeks(GFG),
 implemented in **Java**, while learning Data Structures & Algorithms.
 
 ## Goal
